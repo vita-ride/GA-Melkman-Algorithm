@@ -61,9 +61,9 @@ void MelkmanKonveksniOmotac::pokreniAlgoritam() {
             _konveksniOmotac.pop_front();
             blue = _konveksniOmotac.front();
             _konveksniOmotac.push_front(front);
+
         }
         _konveksniOmotac.push_front(_tacke[i]);
-
         back = _konveksniOmotac.back();
         _konveksniOmotac.pop_back();
         red = _konveksniOmotac.back();
@@ -76,8 +76,7 @@ void MelkmanKonveksniOmotac::pokreniAlgoritam() {
             red = _konveksniOmotac.back();
             _konveksniOmotac.push_back(back);
         }
-        _konveksniOmotac.push_front(_tacke[i]);
-
+        _konveksniOmotac.push_back(_tacke[i]);
         AlgoritamBaza_updateCanvasAndBlock()
     }
     kraj = true;
@@ -90,25 +89,36 @@ void MelkmanKonveksniOmotac::crtajAlgoritam(QPainter *painter) const {
 
     auto pen = painter->pen();
 
-    pen.setColor(Qt::red);
-    painter->setPen(pen);
-    for(auto &tacka: _tacke) {
-        painter->drawPoint(tacka);
-    }
-    pen.setColor(Qt::black);
+    pen.setColor(Qt::gray);
     painter->setPen(pen);
     for(auto i = 1ul; i < _tacke.size(); i++) {
        painter->drawLine(_tacke[i-1], _tacke[i]);
     }
+    painter->drawLine(_tacke[0], _tacke[_tacke.size()-1]);
+
     std::vector<QPoint> omotac(_konveksniOmotac.begin(), _konveksniOmotac.end());
 
-    pen.setColor(Qt::blue);
-    painter->setPen(pen);
-    for(auto i = 1ul; i < omotac.size(); i++) {
-       painter->drawLine(omotac[i-1], omotac[i]);
-    }
-    if (kraj) painter->drawLine(omotac[0], omotac[omotac.size() - 1]);
+    if (omotac.size() > 3) {
+        pen.setColor(Qt::yellow);
+        painter->setPen(pen);
+        for(auto i = 1ul; i < omotac.size() - 1; i++) {
+           painter->drawLine(omotac[i-1], omotac[i]);
+        }
+        if (kraj) painter->drawLine(omotac[omotac.size() - 2], omotac[omotac.size() - 1]);
+        else {
+            pen.setColor(Qt::magenta);
+            painter->setPen(pen);
+            painter->drawEllipse(omotac[0], 6, 6);
 
+            pen.setColor(Qt::red);
+            painter->setPen(pen);
+            painter->drawEllipse(omotac[1], 6, 6);
+
+            pen.setColor(Qt::blue);
+            painter->setPen(pen);
+            painter->drawEllipse(omotac[omotac.size()-2], 6, 6);
+        }
+    }
 }
 void MelkmanKonveksniOmotac::pokreniNaivniAlgoritam() {
     /* Slozenost naivnog algoritma: O(n^3).
@@ -258,7 +268,7 @@ std::vector<QPoint> MelkmanKonveksniOmotac::generisiNasumicniProstPoligon(int br
 //        std::cout << "(" << tacka.x() << ", " << tacka.y() << "), ";
 //    }
 //    std::cout << std::endl;
-    tacke.push_back(tacke[0]);
+//    tacke.push_back(tacke[0]);
     return tacke;
 }
 
@@ -278,6 +288,6 @@ const QPoint MelkmanKonveksniOmotac::nadjiCentar(const std::vector<QPoint> &tack
 }
 
 bool MelkmanKonveksniOmotac::clockwise(const QPoint& a, const QPoint& b, const QPoint& c) const {
-    return (c.x() - b.x()) * (a.y() - b.y()) - (a.x() - b.x()) * (c.y() - b.y()) > 0;
+    return (b.x() - a.x())*(c.y() - a.y()) - (c.x() - a.x())*(b.y() - a.y()) > 0;
 }
 

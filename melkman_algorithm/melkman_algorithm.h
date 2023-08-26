@@ -33,7 +33,6 @@ private:
     std::vector<QPoint> _tacke;
     std::deque<QPoint> _konveksniOmotac;
     bool kraj = false;
-
     int _povrsina;
     unsigned long _i, _j, _k;
     std::vector<QLine> _naivniOmotac;

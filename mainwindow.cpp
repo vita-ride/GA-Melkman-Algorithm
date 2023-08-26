@@ -17,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent)
     animacijaButtonAktivni(false);
     animacijaParametriButtonAktivni(true);
     _naivni = ui->naivniCheck->isChecked();
-
     _pOblastCrtanjaOpenGL = ui->openGLWidget;
 
     _pOblastCrtanja = new OblastCrtanja(this);
@@ -179,7 +178,6 @@ void MainWindow::on_tipAlgoritma_currentIndexChanged(int index)
     animacijaButtonAktivni(false);
 
     TipAlgoritma tipAlgoritma = static_cast<TipAlgoritma>(index);
-
     /* Specijalne vrednosti imaju jedan skup dugmadi */
     if (tipAlgoritma == TipAlgoritma::ALGORITMI_SA_VEZBI ||
         tipAlgoritma == TipAlgoritma::STUDENTSKI_PROJEKTI)
