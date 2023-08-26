@@ -1,6 +1,5 @@
 #include "melkman_algorithm.h"
 #include "pomocnefunkcije.h"
-#include <iostream>
 
 MelkmanKonveksniOmotac::MelkmanKonveksniOmotac(QWidget *pCrtanje,
                                  int pauzaKoraka,
@@ -61,7 +60,6 @@ void MelkmanKonveksniOmotac::pokreniAlgoritam() {
             _konveksniOmotac.pop_front();
             blue = _konveksniOmotac.front();
             _konveksniOmotac.push_front(front);
-
         }
         _konveksniOmotac.push_front(_tacke[i]);
         back = _konveksniOmotac.back();
@@ -253,22 +251,12 @@ std::vector<QPoint> MelkmanKonveksniOmotac::generisiNasumicniProstPoligon(int br
 
     QPoint centar = nadjiCentar(tacke);
 
-//    for (const QPoint& tacka : tacke) {
-//        std::cout << "(" << tacka.x() << ", " << tacka.y() << "), ";
-//    }
-//    std::cout << std::endl;
-
     std::sort(tacke.begin(), tacke.end(), [centar](const auto& lhs, const auto& rhs) {
         double ugaoL = std::atan2(lhs.y() - centar.y(), lhs.x() - centar.x());
         double ugaoR = std::atan2(rhs.y() - centar.y(), rhs.x() - centar.x());
 
         return ugaoL < ugaoR;
     });
-//    for (const QPoint& tacka : tacke) {
-//        std::cout << "(" << tacka.x() << ", " << tacka.y() << "), ";
-//    }
-//    std::cout << std::endl;
-//    tacke.push_back(tacke[0]);
     return tacke;
 }
 
