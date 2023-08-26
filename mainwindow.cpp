@@ -310,14 +310,18 @@ void MainWindow::napraviNoviAlgoritam()
         _pAlgoritamBaza = new Triangulation(_pOblastCrtanja, _duzinaPauze, _naivni,
                                             _imeDatoteke, _brojSlucajnihObjekata);
         break;
+    case TipAlgoritma::MELKMAN_KONVEKSNI_OMOTAC:
+        _pAlgoritamBaza = new MelkmanKonveksniOmotac(_pOblastCrtanja, _duzinaPauze, _naivni,
+                                                     _imeDatoteke, _brojSlucajnihObjekata);
+        break;
     /*case TipAlgoritma::PRESEK_PRAVOUGAONIKA:
         _pAlgoritamBaza = new PresekPravougaonika(_pOblastCrtanja, _duzinaPauze, _naivni,
                                                   _imeDatoteke, _brojSlucajnihObjekata);
         break;*/
-    case TipAlgoritma::DELONE_TRIANGULACIJA:
-        _pAlgoritamBaza = new Delone(_pOblastCrtanja, _duzinaPauze, _naivni,
-                                     _imeDatoteke, _brojSlucajnihObjekata);
-        break;
+//    case TipAlgoritma::DELONE_TRIANGULACIJA:
+//        _pAlgoritamBaza = new Delone(_pOblastCrtanja, _duzinaPauze, _naivni,
+//                                     _imeDatoteke, _brojSlucajnihObjekata);
+//        break;
     default: /* ako nije algoritam uopste */
         break;
     }

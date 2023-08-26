@@ -68,22 +68,6 @@ bool isIllegal(Vertex* v, HalfEdge *e){
                                           e->twin()->origin()->getId()))
         return true;
 }
-
-void DCEL::legalize_edge(Vertex* v, HalfEdge* e){
-    if (isIllegal(v,e)){
-        Vertex* p_k = returnPK(v,e);
-         if (e->isLeft(v)){
-            legalize_edge(v, e->twin()->next());
-            legalize_edge(v, e->twin()->prev());
-         } else{
-
-            legalize_edge(v, e->next());
-            legalize_edge(v, e->prev());
-        }
-        flip(v, e, p_k);
-    }
-}
-
 void flip(Vertex* v, HalfEdge* e, Vertex* p_k){
     if (e->isLeft(v)){
         HalfEdge * nova_ivica = new HalfEdge(v);
@@ -99,6 +83,22 @@ void flip(Vertex* v, HalfEdge* e, Vertex* p_k){
 
     }
 }
+void DCEL::legalize_edge(Vertex* v, HalfEdge* e){
+    if (isIllegal(v,e)){
+        Vertex* p_k = returnPK(v,e);
+         if (e->isLeft(v)){
+            legalize_edge(v, e->twin()->next());
+            legalize_edge(v, e->twin()->prev());
+         } else{
+
+            legalize_edge(v, e->next());
+            legalize_edge(v, e->prev());
+        }
+        flip(v, e, p_k);
+    }
+}
+
+
 double Vertex::dist2(const Vertex& v) const{
     return (x()-v.x())*(x()-v.x()) + (y()-v.y())*(y()-v.y());
 }

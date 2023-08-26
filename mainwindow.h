@@ -18,11 +18,13 @@
 #include "./algoritmi_sa_vezbi/ga06_dceldemo.h"
 #include "./algoritmi_sa_vezbi/ga07_triangulation.h"
 #include "./algoritmi_sa_vezbi/ga08_delaunay_triangulation.h"
+#include "./melkman_algorithm/melkman_algorithm.h"
 //#include "ga06_presekPravougaonika.h"
 
 /* Enumeracija algoritama */
 enum class TipAlgoritma {
     ALGORITMI_SA_VEZBI,
+    MELKMAN_KONVEKSNI_OMOTAC,
     DEMO_ISCRTAVANJA,
     BRISUCA_PRAVA,
     _3D_ISCRTAVANJE,

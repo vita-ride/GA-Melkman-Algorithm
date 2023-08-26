@@ -58,8 +58,8 @@ void TimeMeasurementThread::run()
         case TipAlgoritma::TRIANGULACIJA:
             pAlgorithm = new Triangulation(nullptr, 0, false, "", i);
             break;
-        case TipAlgoritma::DELONE_TRIANGULACIJA:
-            pAlgorithm = new Delone(nullptr,0,false,"", i);
+        case TipAlgoritma::MELKMAN_KONVEKSNI_OMOTAC:
+            pAlgorithm = new MelkmanKonveksniOmotac(nullptr, 0, false, "", i);
             break;
        /* case TipAlgoritma::PRESEK_PRAVOUGAONIKA:
             pAlgorithm = new PresekPravougaonika(nullptr, 0, false, "", i);

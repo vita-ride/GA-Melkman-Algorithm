@@ -694,6 +694,11 @@
            </item>
            <item>
             <property name="text">
+             <string>Melkman konveksni omotac</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
              <string>Demonstracija iscrtavanja</string>
             </property>
            </item>

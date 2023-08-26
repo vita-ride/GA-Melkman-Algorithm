@@ -76,7 +76,8 @@ public:
     void setCoordinates(const QPointF &coordinates);
     HalfEdge* incidentEdge() const;
     void setIncidentEdge(HalfEdge *incidentEdge);
-
+    double dist2(const Vertex& v) const;
+    double norm2() const;
     VertexType type() const { return _type; }
     void setType(VertexType type) { _type = type; }
     void setId(int id){_id=id;};
@@ -159,7 +160,7 @@ public:
     HalfEdge *innerComponent() const;
     void setInnerComponents(const std::vector<HalfEdge *> &innerComponents);
     void setInnerComponent(HalfEdge *innerComponent);
-
+    Face* CopyOfTriangle(Face* triangle);
     inline std::vector<Face*>& getChildrenFaces(){return childrenFaces;}
     bool inTriangle(Vertex* v) const;
 private:

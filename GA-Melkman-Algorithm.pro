@@ -24,6 +24,7 @@ SOURCES += \
     animacijanit.cpp \
     main.cpp \
     mainwindow.cpp \
+    melkman_algorithm/melkman_algorithm.cpp \
     oblastcrtanja.cpp \
     oblastcrtanjaopengl.cpp \
     pomocnefunkcije.cpp \
@@ -48,6 +49,7 @@ HEADERS += \
     animacijanit.h \
     config.h \
     mainwindow.h \
+    melkman_algorithm/melkman_algorithm.h \
     oblastcrtanja.h \
     oblastcrtanjaopengl.h \
     pomocnefunkcije.h \
