@@ -104,6 +104,10 @@ void MelkmanKonveksniOmotac::crtajAlgoritam(QPainter *painter) const {
         }
         if (kraj) painter->drawLine(omotac[omotac.size() - 2], omotac[omotac.size() - 1]);
         else {
+            pen.setColor(Qt::darkYellow);
+            painter->setPen(pen);
+            painter->drawLine(omotac[omotac.size() - 2], omotac[omotac.size() - 1]);
+
             pen.setColor(Qt::magenta);
             painter->setPen(pen);
             painter->drawEllipse(omotac[0], 6, 6);
