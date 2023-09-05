@@ -51,8 +51,15 @@ void MelkmanKonveksniOmotac::pokreniAlgoritam() {
         auto red = _konveksniOmotac.back();
         _konveksniOmotac.push_back(back);
 
-        if (clockwise(blue, front, _tacke[i]) && clockwise(back, red, _tacke[i]))
+        if (clockwise(blue, front, _tacke[i]) && clockwise(back, red, _tacke[i])){
+            // samo za crtanje
+            _konveksniOmotac.push_back(_tacke[i]);
+            _konveksniOmotac.push_front(_tacke[i]);
+            AlgoritamBaza_updateCanvasAndBlock()
+            _konveksniOmotac.pop_back();
+            _konveksniOmotac.pop_front();
             continue;
+        }
 
         while (!clockwise(blue, front, _tacke[i])) {
             _konveksniOmotac.pop_front();
@@ -60,6 +67,13 @@ void MelkmanKonveksniOmotac::pokreniAlgoritam() {
             _konveksniOmotac.pop_front();
             blue = _konveksniOmotac.front();
             _konveksniOmotac.push_front(front);
+
+            // samo za crtanje
+            _konveksniOmotac.push_back(_tacke[i]);
+            _konveksniOmotac.push_front(_tacke[i]);
+            AlgoritamBaza_updateCanvasAndBlock()
+            _konveksniOmotac.pop_back();
+            _konveksniOmotac.pop_front();
         }
         _konveksniOmotac.push_front(_tacke[i]);
         back = _konveksniOmotac.back();
@@ -73,9 +87,14 @@ void MelkmanKonveksniOmotac::pokreniAlgoritam() {
             _konveksniOmotac.pop_back();
             red = _konveksniOmotac.back();
             _konveksniOmotac.push_back(back);
+
+            // samo za crtanje
+            _konveksniOmotac.push_back(_tacke[i]);
+            AlgoritamBaza_updateCanvasAndBlock()
+            _konveksniOmotac.pop_back();
+
         }
         _konveksniOmotac.push_back(_tacke[i]);
-        AlgoritamBaza_updateCanvasAndBlock()
     }
     kraj = true;
     AlgoritamBaza_updateCanvasAndBlock()
