@@ -102,7 +102,15 @@ void MelkmanKonveksniOmotac::crtajAlgoritam(QPainter *painter) const {
         for(auto i = 1ul; i < omotac.size() - 1; i++) {
            painter->drawLine(omotac[i-1], omotac[i]);
         }
-        if (kraj) painter->drawLine(omotac[omotac.size() - 2], omotac[omotac.size() - 1]);
+
+        if (kraj) {
+            painter->drawLine(omotac[omotac.size() - 2], omotac[omotac.size() - 1]);
+            pen.setColor(Qt::black);
+            painter->setPen(pen);
+            for (auto tacka : omotac) {
+                painter->drawEllipse(tacka, 6, 6);
+            }
+        }
         else {
             pen.setColor(Qt::darkYellow);
             painter->setPen(pen);
@@ -119,7 +127,15 @@ void MelkmanKonveksniOmotac::crtajAlgoritam(QPainter *painter) const {
             pen.setColor(Qt::blue);
             painter->setPen(pen);
             painter->drawEllipse(omotac[omotac.size()-2], 6, 6);
+
+            pen.setColor(Qt::black);
+            painter->setPen(pen);
+            for (auto i = 2; i < (int)omotac.size()-2; i++ ) {
+                painter->drawEllipse(omotac[i], 6, 6);
+            }
         }
+
+
     }
 }
 void MelkmanKonveksniOmotac::pokreniNaivniAlgoritam() {
@@ -280,6 +296,6 @@ const QPoint MelkmanKonveksniOmotac::nadjiCentar(const std::vector<QPoint> &tack
 }
 
 bool MelkmanKonveksniOmotac::clockwise(const QPoint& a, const QPoint& b, const QPoint& c) const {
-    return (b.x() - a.x())*(c.y() - a.y()) - (c.x() - a.x())*(b.y() - a.y()) > 0;
+    return (b.x() - a.x())*(c.y() - a.y()) - (c.x() - a.x())*(b.y() - a.y()) >= 0;
 }
 
