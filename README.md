@@ -4,4 +4,4 @@ Computational Geometry course at Faculty of Mathematics - University of Belgrade
 
 Video:
 
-https://github.com/vita-ride/GA-Melkman-Algorithm/assets/76535188/3de868fd-80f2-4aa8-96d5-9c9057e7e6e5
+https://github.com/vita-ride/GA-Melkman-Algorithm/assets/76535188/925d9041-ce72-4ec9-852a-be1d45e4f20c
